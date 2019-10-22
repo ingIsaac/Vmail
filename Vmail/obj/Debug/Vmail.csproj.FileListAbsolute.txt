@@ -1,0 +1,16 @@
+c:\users\server2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\Vmail.exe.config
+c:\users\server2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\Vmail.exe
+c:\users\server2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\Vmail.pdb
+c:\users\server2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\OpenPop.dll
+c:\users\server2\documents\visual studio 2015\Projects\Vmail\Vmail\obj\Debug\Vmail.csprojResolveAssemblyReference.cache
+c:\users\server2\documents\visual studio 2015\Projects\Vmail\Vmail\obj\Debug\Vmail.Form1.resources
+c:\users\server2\documents\visual studio 2015\Projects\Vmail\Vmail\obj\Debug\Vmail.Properties.Resources.resources
+c:\users\server2\documents\visual studio 2015\Projects\Vmail\Vmail\obj\Debug\Vmail.csproj.GenerateResource.Cache
+c:\users\server2\documents\visual studio 2015\Projects\Vmail\Vmail\obj\Debug\Vmail.exe
+c:\users\server2\documents\visual studio 2015\Projects\Vmail\Vmail\obj\Debug\Vmail.pdb
+C:\Users\SERVER2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\localDB.mdf
+C:\Users\SERVER2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\localDB_log.ldf
+C:\Users\SERVER2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\EntityFramework.dll
+C:\Users\SERVER2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\SERVER2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\EntityFramework.xml
+C:\Users\SERVER2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\EntityFramework.SqlServer.xml

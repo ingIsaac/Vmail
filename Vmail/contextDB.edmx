@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="localDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="messageID" Type="varchar(max)" />
+          <Property Name="sender" Type="varchar(max)" />
+          <Property Name="subject" Type="varchar(max)" />
+          <Property Name="content_view" Type="varchar(max)" />
+          <Property Name="date" Type="varchar" MaxLength="50" />
+          <Property Name="read" Type="bit" />
+          <Property Name="attachment" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="localDBModelStoreContainer">
+          <EntitySet Name="messages" EntityType="Self.messages" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="localDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="localDBEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="messages" EntityType="localDBModel.message" />
+        </EntityContainer>
+        <EntityType Name="message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="messageID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sender" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content_view" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="read" Type="Boolean" />
+          <Property Name="attachment" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="localDBModelStoreContainer" CdmEntityContainer="localDBEntities" >
+          <EntitySetMapping Name="messages">
+            <EntityTypeMapping TypeName="localDBModel.message">
+              <MappingFragment StoreEntitySet="messages">
+                <ScalarProperty Name="attachment" ColumnName="attachment" />
+                <ScalarProperty Name="read" ColumnName="read" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="content_view" ColumnName="content_view" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="sender" ColumnName="sender" />
+                <ScalarProperty Name="messageID" ColumnName="messageID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
