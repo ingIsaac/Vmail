@@ -14,3 +14,4 @@ C:\Users\SERVER2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\Ent
 C:\Users\SERVER2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\SERVER2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\EntityFramework.xml
 C:\Users\SERVER2\documents\visual studio 2015\Projects\Vmail\Vmail\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\SERVER2\documents\visual studio 2015\Projects\Vmail\Vmail\obj\Debug\Vmail.user.resources

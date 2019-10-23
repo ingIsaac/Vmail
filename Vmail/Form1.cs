@@ -13,52 +13,96 @@ namespace Vmail
 {
     public partial class Form1 : Form
     {
+        private List<user_c> user_list;
+
         public Form1()
         {
             InitializeComponent();
             this.Shown += Form1_Shown;
         }
 
-        private void Form1_Shown(object sender, EventArgs e)
+        public void loadMailList()
         {
-            DownloadMessages(dataGridView1);
+            user_list = constants.getMailList(this, tabControl1);
         }
 
-        public void DownloadMessages(DataGridView table)
+        public void loadProfiles()
+        {
+            foreach (var x in user_list)
+            {
+                DownloadMessages(x.server, x.port, x.ssl, x.user, x.password, x.table);
+            }
+        }
+
+        public List<user_c> getUserList()
+        {
+            return user_list;
+        }
+
+        public void load()
+        {
+            loadMailList();
+            loadProfiles();
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            load();
+        }
+
+        public void DownloadMessages(string server, int port, bool ssl, string user, string password, DataGridView table)
         {
             BackgroundWorker bg = new BackgroundWorker();
             bg.DoWork += (sender, e) =>
             {
                 try
                 {
-                    FetchMessages("Outlook.Office365.com", 995, true, "ing_isaacsolis@hotmail.com", "software456sr", 10);         
+                    FetchMessages(server, port, ssl, user, password, 10);         
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show(err.ToString());
+                    MessageBox.Show("[Error] error de conexión <?>. \n\n" + err.ToString(), constants.msg_box_caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             };
             bg.RunWorkerCompleted += (sender, e) =>
             {
-                pictureBox1.Visible = false;
-                label1.Text = "Listo";
-                using (localDBEntities context = new localDBEntities())
+                BackgroundWorker _bg = new BackgroundWorker();
+                _bg.DoWork += (_sender, _e) =>
                 {
-                    byte[] read = constants.imageToByte(Properties.Resources.check_icon);
-                    byte[] attachment = constants.imageToByte(Properties.Resources.attachment_icon);
-                    var t = from x in context.messages
-                            select new
+                    using (localDBEntities context = new localDBEntities())
+                    {
+                        byte[] read = constants.imageToByte(Properties.Resources.check_icon);
+                        byte[] attachment = constants.imageToByte(Properties.Resources.attachment_icon);
+                        var t = from x in context.messages
+                                select new
+                                {
+                                    Leido = x.read == true ? read : null,
+                                    Adjuntos = x.attachment == true ? attachment : null,
+                                    De = x.sender,
+                                    Asunto = x.subject,
+                                    Contenido = x.content_view,
+                                    Fecha = x.date
+                                };
+                        if(table.InvokeRequired)
+                        {
+                            table.Invoke((MethodInvoker)delegate
                             {
-                                Leido = x.read == true ? read : null,
-                                Adjuntos = x.attachment == true ? attachment : null,
-                                De = x.sender,
-                                Asunto = x.subject,
-                                Contenido = x.content_view,
-                                Fecha  = x.date
-                            };
-                    table.DataSource = null;
-                    table.DataSource = t.ToList();             
-                }
+                                table.DataSource = null;
+                                table.DataSource = t.ToList();
+                            });
+                        }                      
+                    }
+                };
+                _bg.RunWorkerCompleted += (_sender, _e) =>
+                {
+                    pictureBox1.Visible = false;
+                    label1.Text = "Listo.";
+                };
+                if(!_bg.IsBusy)
+                {
+                    label1.Text = "Cargando Mensajes...";
+                    _bg.RunWorkerAsync();
+                }              
             };
             if(!bg.IsBusy)
             {
@@ -104,5 +148,9 @@ namespace Vmail
             }
         }
 
+        private void añadirUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new user().ShowDialog(this);
+        }
     }
 }

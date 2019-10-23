@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="localDBModelStoreContainer" CdmEntityContainer="localDBEntities">
+    <EntitySetMapping Name="messages">
+      <EntityTypeMapping TypeName="localDBModel.message">
+        <MappingFragment StoreEntitySet="messages">
+          <ScalarProperty Name="attachment" ColumnName="attachment" />
+          <ScalarProperty Name="read" ColumnName="read" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="content_view" ColumnName="content_view" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="sender" ColumnName="sender" />
+          <ScalarProperty Name="messageID" ColumnName="messageID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
